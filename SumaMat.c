@@ -2,23 +2,24 @@
 #include <stdlib.h>
 #include <time.h>
 
-int matrizA(int fA, int cA, int MatrizA[fA][cA]);
-int matrizB(int fB, int cB, int MatrizB[fB][cB]);
-int SumaMatrices(int fA, int cA, int fB, int cB, int fR, int cR, int MatrizA[fA][cA], int MatrizB[fB][cB], int MatrizR[fR][cR]);
-int matrizR(int fR, int cR, int MatrizR[fR][cR]);
+// Declaracion de funcionesa
+void matrizA(int fA, int cA, int MatrizA[fA][cA]);
+void matrizB(int fB, int cB, int MatrizB[fB][cB]);
+void SumaMatrices(int fA, int cA, int fB, int cB, int fR, int cR, int MatrizA[fA][cA], int MatrizB[fB][cB], int MatrizR[fR][cR]);
+void matrizR(int fR, int cR, int MatrizR[fR][cR]);
 
 int main(int argc, char const *argv[])
 {
     srand(time(NULL));
     int fA, cA, fB, cB, fR, cR;
+    // Dimensiones para la matriz A
     printf("Dimensiones de la MATRIZ A\n");
     printf("FILAS: ");
     scanf("%d", &fA);
     printf("COLUMNAS: ");
     scanf("%d", &cA);
     int MatrizA[fA][cA];
-
-    printf("MATRIZ A: \n ");
+    // Generacion de numeros aleatorios matriz A
     for (int i = 0; i < fA; i++)
     {
         for (int j = 0; j < cA; j++)
@@ -26,15 +27,14 @@ int main(int argc, char const *argv[])
             MatrizA[i][j] = rand() % 101;
         }
     }
-
+    // Dimensiones para la matriz B
     printf("Dimensiones de la MATRIZ B\n");
     printf("FILAS: ");
     scanf("%d", &fB);
     printf("COLUMNAS: ");
     scanf("%d", &cB);
     int MatrizB[fB][cB];
-
-    printf("MATRIZ B: \n ");
+    // Generacion de numeros aleatorios matriz B
     for (int i = 0; i < fB; i++)
     {
         for (int j = 0; j < cB; j++)
@@ -42,19 +42,21 @@ int main(int argc, char const *argv[])
             MatrizB[i][j] = rand() % 101;
         }
     }
-
+    // Impresion de la matriz A
     printf("MATRIZ A: \n");
-        matrizA(fA, cA, MatrizA[fA][cA]);
-    printf("\n");
+    matrizA(fA, cA, MatrizA[fA][cA]);
+    // Impresion de la matriz B
     printf("MATRIZ B: \n");
-        matrizB(fB, cB, MatrizB[fB][cB]);
+    matrizB(fB, cB, MatrizB[fB][cB]);
+    ////Impresion de la matriz resultante
+    int MatrizR[fR][cR];
     printf("MATRIZ RESULTANTE: \n");
-        matrizR(fR, cR, MatrizR[fR][cR]);
+    matrizR(fR, cR, MatrizR[fR][cR]);
 
     return 0;
 }
-
-int matrizA(int fA, int cA, int MatrizA[fA][cA])
+// Funcion para imprimir la matriz A
+void matrizA(int fA, int cA, int MatrizA[fA][cA])
 {
     for (int i = 0; i < fA; i++)
     {
@@ -65,8 +67,8 @@ int matrizA(int fA, int cA, int MatrizA[fA][cA])
         printf("\n");
     }
 }
-
-int matrizB(int fB, int cB, int MatrizB[fB][cB])
+// Funcion para imprimir la matriz B
+void matrizB(int fB, int cB, int MatrizB[fB][cB])
 {
     for (int i = 0; i < fB; i++)
     {
@@ -77,23 +79,26 @@ int matrizB(int fB, int cB, int MatrizB[fB][cB])
         printf("\n");
     }
 }
-
-int SumaMatrices(int fA, int cA, int fB, int cB, int fR, int cR, int MatrizA[fA][cA], int MatrizB[fB][cB], int MatrizR[fR][cR])
- {
-    for (int i = 0; i < fR; i++) {
-        for (int j = 0; j < cR; j++) {
+// Funcion para realizar la suma de matrices
+void SumaMatrices(int fA, int cA, int fB, int cB, int fR, int cR, int MatrizA[fA][cA], int MatrizB[fB][cB], int MatrizR[fR][cR])
+{
+    fR = fA, cR = cA;
+    for (int i = 0; i < fR; i++)
+    {
+        for (int j = 0; j < cR; j++)
+        {
             MatrizR[i][j] = (MatrizA[i][j]) + (MatrizB[i][j]);
         }
     }
 }
-
-int matrizR(int fR, int cR, int MatrizR[fR][cR])
+// Funcion para imprimir la matriz resultante
+void matrizR(int fR, int cR, int MatrizR[fR][cR])
 {
     for (int i = 0; i < fR; i++)
     {
         for (int j = 0; j < cR; j++)
         {
-            printf("%d\t", MatrizR[i][j]);
+            printf("%4d\t", MatrizR[i][j]);
         }
         printf("\n");
     }
