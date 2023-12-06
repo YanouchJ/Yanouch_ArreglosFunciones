@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-void Matriz1(int fA, int cA, int MatrizA[fA][cA]);
-void Matriz2(int fB, int cB, int MatrizB[fB][cB]);
-/* void SumaMatrices(int MatrizA[fA][cA], int MatrizB[fB][cB], int MatrizR[fR][cR]);*/
+int matrizA(int fA, int cA, int MatrizA[fA][cA]);
+int matrizB(int fB, int cB, int MatrizB[fB][cB]);
+int SumaMatrices(int fA, int cA, int fB, int cB, int fR, int cR, int MatrizA[fA][cA], int MatrizB[fB][cB], int MatrizR[fR][cR]);
+int matrizR(int fR, int cR, int MatrizR[fR][cR]);
 
 int main(int argc, char const *argv[])
 {
@@ -43,15 +44,17 @@ int main(int argc, char const *argv[])
     }
 
     printf("MATRIZ A: \n");
-    Matriz1(fA, cA, MatrizA[fA][cA]);
+        matrizA(fA, cA, MatrizA[fA][cA]);
     printf("\n");
     printf("MATRIZ B: \n");
-    Matriz2(fB, cB, MatrizB[fB][cB]);
+        matrizB(fB, cB, MatrizB[fB][cB]);
+    printf("MATRIZ RESULTANTE: \n");
+        matrizR(fR, cR, MatrizR[fR][cR]);
 
     return 0;
 }
 
-void Matriz1(int fA, int cA, int MatrizA[fA][cA])
+int matrizA(int fA, int cA, int MatrizA[fA][cA])
 {
     for (int i = 0; i < fA; i++)
     {
@@ -63,13 +66,34 @@ void Matriz1(int fA, int cA, int MatrizA[fA][cA])
     }
 }
 
-void Matriz2(int fB, int cB, int MatrizB[fB][cB])
+int matrizB(int fB, int cB, int MatrizB[fB][cB])
 {
     for (int i = 0; i < fB; i++)
     {
         for (int j = 0; j < cB; j++)
         {
             printf("%d\t", MatrizB[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int SumaMatrices(int fA, int cA, int fB, int cB, int fR, int cR, int MatrizA[fA][cA], int MatrizB[fB][cB], int MatrizR[fR][cR])
+ {
+    for (int i = 0; i < fR; i++) {
+        for (int j = 0; j < cR; j++) {
+            MatrizR[i][j] = (MatrizA[i][j]) + (MatrizB[i][j]);
+        }
+    }
+}
+
+int matrizR(int fR, int cR, int MatrizR[fR][cR])
+{
+    for (int i = 0; i < fR; i++)
+    {
+        for (int j = 0; j < cR; j++)
+        {
+            printf("%d\t", MatrizR[i][j]);
         }
         printf("\n");
     }
